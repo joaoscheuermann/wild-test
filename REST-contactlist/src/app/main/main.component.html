@@ -1,0 +1,17 @@
+<view>
+    <div class="searchBar">
+        <!-- some search things here -->
+        <div class="inputContainer">
+            <input #search type="text" placeholder="Pesquisar..." (keyup)="null">
+        </div>
+    </div>
+    
+    <div class="container">
+        <contact *ngFor="let contact of contacts | NameFilterPipe: search.value" [Name]="contact.Name" [_id]="contact._id"></contact>
+    </div>
+    
+    <div class="addBtn">
+        <!-- some icon here -->
+    </div>        
+
+</view>
