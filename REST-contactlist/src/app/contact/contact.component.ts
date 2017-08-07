@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +13,12 @@ export class ContactComponent {
     @Input() avatar: string;
     @Input() _id: string;
 
+    constructor (private router: Router) {
+        // console.log(this.router)
+    }
+
     click(ev: Event) {
-        ev.preventDefault();        
+        ev.preventDefault();   
+        this.router.navigate(['./infos', this._id]);     
     }
 }

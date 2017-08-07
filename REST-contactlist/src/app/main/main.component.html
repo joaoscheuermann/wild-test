@@ -10,7 +10,7 @@
         <contact *ngFor="let contact of contacts | NameFilterPipe: search.value" [Name]="contact.Name" [_id]="contact._id"></contact>
     </div>
     
-    <div class="addBtn">
+    <div class="addBtn" (click)="click($event)">
         <!-- some icon here -->
     </div>        
 

@@ -1,32 +1,38 @@
 import { Component } from "@angular/core";
 
+import { RESTService } from "../REST/rest.service";
+
 @Component({
     moduleId: module.id,
     selector: 'main',
     templateUrl: './main.component.html',
-    styleUrls: ['./main.component.css']
+    styleUrls: ['./main.component.css'],
+    providers: [RESTService]
 })
 
 export class MainComponent {
 
-    contacts = [
-        {
-            Name: "Joao Vitor",
-            Telephone: 5511986266799,
-            Adress: "mooca",
-            Email: "jvitor.sche@gmail.com",
-            BirthDate: 26101996,
-            _id: "123456"
-        },
-        {
-            Name: "TESTE",
-            Telephone: 1122333333333,
-            Adress: "mooca",
-            Email: "jvitor.sche@gmail.com",
-            BirthDate: 26101996,
-            _id: "45678978978"
-        }
-    ]
+    private contacts = []
 
-    constructor() { }
+    constructor(private REST: RESTService) {
+        this.REST.getContacts().subscribe(data => this.contacts = data, err => {
+            console.log(err)
+        });
+    }
+
+    click(ev: Event) {
+        ev.preventDefault();        
+
+        // this.REST.addContact({
+        //     Name: 'lala',
+        //     Telephone: 112233333333,
+        //     Adress: 'cada do kraio',
+        //     Email: '@meu pau de oculos',
+        //     BirthDate: 'lalala'
+        // })
+        //     .subscribe(data => this.contacts = this.contacts.concat(data), err => {
+        //         console.log(err);                
+        //     });
+    }
+
 }

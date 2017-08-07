@@ -6,7 +6,7 @@ import { ContactComponent } from "./contact.component";
 })
 
 export class NameFilterPipe implements PipeTransform {
-    transform(contacts: ContactComponent[], typed: string = "") {
-        return contacts.filter(contact => contact.Name.toLowerCase().includes(typed.toLowerCase()))
+    transform(contacts: ContactComponent[], typed: string = "") {               
+        return contacts.filter(contact => contact.Name.toLowerCase().includes(typed.toLowerCase())) 
     }
 }
