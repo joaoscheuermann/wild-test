@@ -15,7 +15,7 @@ export class RESTService {
         return this.http.get(this.url).map((res: Response) => res.json());
     }
 
-    addContact(json: Contact) {
+    addContact(json) {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         return this.http.post(this.url, json, options).map((res: Response) => res.json());

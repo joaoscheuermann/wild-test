@@ -30,6 +30,7 @@ router.post('/', function (req, res, next) {
 router.put('/', function (req, res, next) {
     var item = req.body;
     db.update({ _id: item._id }, item, {}, function (err) {
+        if (err) console.log(err);
         res.json(item);
         console.log(`CONTACTS: UPDATED: Name: ${item.Name}, Telephone: ${item.Telephone}, Adress: ${item.Adress}, Email: ${item.Email}, BirthDate: ${item.BirthDate}`)
     });
@@ -37,8 +38,9 @@ router.put('/', function (req, res, next) {
 
 // DELETE (EXCLUDE AN CONTACT FROM THE LIST)
 router.delete('/', function (req, res, next) {
-    var item = req.body;
+    var item = req.body;    
     db.remove({ _id: item._id }, {}, function (err) {
+        if (err) console.log(err);
         res.json(item);
         console.log(`CONTACTS: DELETED: Name: ${item.Name}, Telephone: ${item.Telephone}, Adress: ${item.Adress}, Email: ${item.Email}, BirthDate: ${item.BirthDate}`)
     });
